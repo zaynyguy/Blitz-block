@@ -46,14 +46,15 @@ def blitz(win):
         ball.move(dx, dy)
         ball_center = ball.getCenter()
 
-        # Move the target back and forth
-        target.move(0, target_dy)
-        if target.getP1().getY() <= 10 or target.getP2().getY() >= WINDOW_HEIGHT - 10:
-            target_dy = -target_dy
 
         # Check for wall collisions (top and bottom)
         if ball_center.getY() <= 10 or ball_center.getY() >= 590:
             dy = -dy
+
+        # Move the target back and forth
+        target.move(0, target_dy)
+        if target.getP1().getY() <= 10 or target.getP2().getY() >= WINDOW_HEIGHT - 10:
+            target_dy = -target_dy
 
         # Check for paddle collisions
         if (20 <= ball_center.getX() - 5 <= 30 and 
@@ -119,6 +120,6 @@ def blitz(win):
 
         time.sleep(0.02)  # Slow down the loop
 
-    # Escape sequence
+        # Escape sequence
         if key == 'Escape':
             break
