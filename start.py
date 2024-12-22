@@ -1,13 +1,10 @@
 from graphics import *
+from settings import *
 import time
 
-WINDOW_WIDTH, WINDOW_HEIGHT = 800, 600
 
-def start():
+def start(win):
     
-    win = GraphWin("Center Target Game", WINDOW_WIDTH, WINDOW_HEIGHT)
-    win.setBackground("black")
-
     title = Text(Point(400, WINDOW_HEIGHT/3), 'Biliz Block')
     title.setSize(100)
     title.setStyle('bold')
@@ -58,21 +55,32 @@ def start():
             y = click.getY()
 
             if 330 < x < 470 and 330 < y < 360: # for play
-                print('this is play')
+                undraw_all()
+                return 0
                 
             elif 330 < x < 470 and 370 < y < 400: # for multiplayer
-                print('this is mulit')
+                undraw_all()
+                return 1
                 
             elif 330 < x < 470 and 410 < y < 440: # for about
-                print('this is about')
+                undraw_all()
+                return 2
                 
-            elif 330 < x < 470 and 450 < y < 480 or 'Escape': # for quit
-                print('this is quit')
+            elif 330 < x < 470 and 450 < y < 480 or key == 'Escape': # for quit
+                undraw_all()
                 break
             
+        def undraw_all():
+            title.undraw()
+            play.undraw()
+            multi.undraw()
+            about.undraw()
+            quit.undraw()
+            play_text.undraw()
+            multi_text.undraw()   
+            about_text.undraw()
+            quit_text.undraw()
 
         time.sleep(1)
 
     win.close()
-
-start()

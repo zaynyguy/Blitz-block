@@ -1,7 +1,7 @@
 from settings import *
 
 
-def blitz(win):
+def multi(win):
     
     # Draw paddles
     paddle1 = Rectangle(Point(20, 250), Point(30, 350))  # Left paddle

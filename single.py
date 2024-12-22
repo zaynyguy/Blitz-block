@@ -1,7 +1,7 @@
 from settings import *
 
 
-def single(win, running):
+def single(win):
 
     # Draw the paddle
     paddle = Rectangle(Point(WINDOW_WIDTH / 2 - 50, WINDOW_HEIGHT - 30),
@@ -43,7 +43,7 @@ def single(win, running):
     # Target velocity
     tx = 5
 
-    while running:
+    while True:
 
         # Move the ball
         ball.move(dx, dy)
