@@ -50,36 +50,40 @@ def start(win):
         key = win.checkKey()
         click = win.checkMouse()
 
-        if click or key:
+        if click:
             x = click.getX()
             y = click.getY()
 
             if 330 < x < 470 and 330 < y < 360: # for play
-                undraw_all()
+                clear_window(win)
                 return 0
                 
             elif 330 < x < 470 and 370 < y < 400: # for multiplayer
-                undraw_all()
+                clear_window(win)
                 return 1
                 
             elif 330 < x < 470 and 410 < y < 440: # for about
-                undraw_all()
+                clear_window(win)
                 return 2
                 
-            elif 330 < x < 470 and 450 < y < 480 or key == 'Escape': # for quit
-                undraw_all()
-                break
+            elif 330 < x < 470 and 450 < y < 480 : # for quit
+                clear_window(win)
+                return 3
+        if key:
+            if key == 'Escape':
+                clear_window(win)
+                return 3
             
-        def undraw_all():
-            title.undraw()
-            play.undraw()
-            multi.undraw()
-            about.undraw()
-            quit.undraw()
-            play_text.undraw()
-            multi_text.undraw()   
-            about_text.undraw()
-            quit_text.undraw()
+        # def undraw_all():
+        #     title.undraw()
+        #     play.undraw()
+        #     multi.undraw()
+        #     about.undraw()
+        #     quit.undraw()
+        #     play_text.undraw()
+        #     multi_text.undraw()   
+        #     about_text.undraw()
+        #     quit_text.undraw()
 
         time.sleep(1)
 

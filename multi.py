@@ -13,7 +13,7 @@ def multi(win):
     paddle2.draw(win)
 
     # Draw ball
-    ball_start_x = WINDOW_WIDTH / 2
+    ball_start_x = WINDOW_WIDTH / 2 + random.choice([-50, 50]) 
     ball_start_y = WINDOW_HEIGHT / 2
     ball = Circle(Point(ball_start_x, ball_start_y), 10)
     ball.setFill("white")
@@ -36,6 +36,7 @@ def multi(win):
     # Ball velocity
     dx = random.choice([-5, 5])  # Randomize initial direction
     dy = random.choice([-5, 5])
+
 
     # Target velocity
     target_dy = 3
@@ -102,21 +103,22 @@ def multi(win):
 
         # End the game when a player reaches 10 points
         if score1 >= 10 or score2 >= 10:
-            winner = "Left Player" if score1 >= 10 else "Right Player"
-            win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"{winner} Wins!")
-            win_message.setTextColor("yellow")
-            win_message.setSize(30)
-            win_message.draw(win)
-            break
+            clear_window(win)
+            time.sleep(1)
+            winner = "Left Player Wins!" if score1 >= 10 else "Right Player Wins!"
+            exit = message_menu(winner, win)
+            return exit
+            
+            
 
         # End the game when the other player reaches -5 points
         if score1 <= -5 or score2 <= -5:
-            winner = "Right Player" if score2 >= -5 else "Left Player"
-            win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"{winner} Wins!")
-            win_message.setTextColor("yellow")
-            win_message.setSize(30)
-            win_message.draw(win)
-            break
+            clear_window(win)
+            time.sleep(1)
+            winner = "Right Player Wins!" if score2 >= -5 else "Left Player Wins!"
+            exit = message_menu(winner, win)
+            return exit
+            
 
         time.sleep(0.02)  # Slow down the loop
 

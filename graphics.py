@@ -752,7 +752,7 @@ class Text(GraphicsObject):
         return self.anchor.clone()
 
     def setFace(self, face):
-        if face in ['helvetica', 'arial', 'courier', 'times roman']:
+        if face in ['Press Start 2P','helvetica', 'arial', 'courier', 'times roman']:
             f, s, b = self.config['font']
             self._reconfig("font", (face, s, b))
         else:

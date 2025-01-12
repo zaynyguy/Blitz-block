@@ -37,6 +37,9 @@ def single(win):
     life_display.setSize(20)
     life_display.draw(win)
 
+
+    single_items = ['paddle', 'ball', 'target', 'score_display', 'life_display']
+
     # Ball velocity
     dx, dy = random.choice([-5, 5]), -5 # Randomize initial direction
 
@@ -72,16 +75,16 @@ def single(win):
                 dx = -dx
                 # Separate the ball to avoid sticking
                 if ball_center.getX() < target_center.getX():
-                    ball.move(-5, 0)
+                    ball.move(-10, 0)
                 else:
-                    ball.move(5, 0)
+                    ball.move(10, 0)
             else:  # Vertical collision
                 dy = -dy
                 # Separate the ball to avoid sticking
                 if ball_center.getY() < target_center.getY():
-                    ball.move(0, -5)
+                    ball.move(0, -10)
                 else:
-                    ball.move(0, 5)
+                    ball.move(0, 10)
 
 
 
@@ -116,17 +119,19 @@ def single(win):
 
         # End game if no lives left
         if life == 0:
-            break
+            clear_window(win)
+            time.sleep(1)
+            exit = message_menu('Game over', win)
+            return exit
+
+        
 
         if score1 >= 5:
         # End the game when a player reaches 5 points
-            win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"Congratulation")
-            win_message.setTextColor("yellow")
-            win_message.setStyle('bold')
-            win_message.setSize(36)
-            win_message.draw(win)
+            clear_window(win)
             time.sleep(1)
-            break
+            exit = message_menu('Congratulation', win)
+            return exit
 
         # Paddle movement
         key = win.checkKey()
