@@ -71,22 +71,22 @@ def multi(win):
         if (target.getP1().getX() <= ball_center.getX() <= target.getP2().getX() and
             target.getP1().getY() <= ball_center.getY() <= target.getP2().getY()):
             if dx < 0:  # Left player hits the target
-                score1 += 1
-            else:  # Right player hits the target
                 score2 += 1
-            score_display.setText(f"{score1} | {score2}")
+            else:  # Right player hits the target
+                score1 += 1
+            score_display.setText(f"{score2} | {score1}")
             dx = -dx  # Reverse ball direction
             ball.move(20 if dx > 0 else -20, 0)  # Move ball away to prevent sticking
 
         # Check for point loss (side wall collision)
         if ball_center.getX() < 0:  # Left player loses a point
-            score1 -= 1
-            score_display.setText(f"{score1} | {score2}")
+            score2 -= 1
+            score_display.setText(f"{score2} | {score1}")
             ball.move(ball_start_x - ball_center.getX(), ball_start_y - ball_center.getY())
             dx, dy = random.choice([-5, 5]), random.choice([-5, 5])  # Reset ball velocity
         elif ball_center.getX() > 800:  # Right player loses a point
-            score2 -= 1
-            score_display.setText(f"{score1} | {score2}")
+            score1 -= 1
+            score_display.setText(f"{score2} | {score1}")
             ball.move(ball_start_x - ball_center.getX(), ball_start_y - ball_center.getY())
             dx, dy = random.choice([-5, 5]), random.choice([-5, 5])  # Reset ball velocity
 
@@ -102,20 +102,20 @@ def multi(win):
             paddle2.move(0, 20)
 
         # End the game when a player reaches 10 points
-        if score1 >= 10 or score2 >= 10:
+        if score1 >= 5 or score2 >= 5:
             clear_window(win)
             time.sleep(1)
-            winner = "Left Player Wins!" if score1 >= 10 else "Right Player Wins!"
+            winner = "Left Player Wins!" if score1 >= 5 else "Right Player Wins!"
             exit = message_menu(winner, win)
             return exit
             
             
 
         # End the game when the other player reaches -5 points
-        if score1 <= -5 or score2 <= -5:
+        if score1 <= -3 or score2 <= -3:
             clear_window(win)
             time.sleep(1)
-            winner = "Right Player Wins!" if score2 >= -5 else "Left Player Wins!"
+            winner = "Right Player Wins!" if score2 >= -3 else "Left Player Wins!"
             exit = message_menu(winner, win)
             return exit
             

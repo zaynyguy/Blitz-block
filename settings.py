@@ -1,6 +1,8 @@
 from graphics import *
 import time
+import math
 import random
+
 
 WINDOW_WIDTH, WINDOW_HEIGHT = 800, 600
 
@@ -82,3 +84,29 @@ def message_menu(message, win):
             break
 
     return exit_value
+
+def game_style_menu(win):
+    win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"Choose game")
+    win_message.setTextColor("white")
+    win_message.setFace('Press Start 2P')
+    win_message.setSize(30)
+    win_message.draw(win)
+
+    breaker = Button(win, Point(250,400), 100, 30, 'Breaker')
+    multi = Button(win, Point(400,400), 100, 30, 'Pong')
+    play = Button(win, Point(550,400), 100, 30, 'Blitz')
+
+    point = win.getMouse()
+
+    if breaker.is_clicked(point):
+        clear_window(win)
+        return 0
+    if multi.is_clicked(point):
+        clear_window(win)
+        return 1
+    if play.is_clicked(point):
+        clear_window(win)
+        return 2
+
+
+
