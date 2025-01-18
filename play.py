@@ -136,6 +136,7 @@ def play(win):
     canon_axis.draw(win)
     canon_base.draw(win)
     target.draw(win)
+   
 
     # Initial coordinates of the aim line
     p1 = aim_line.getP1()

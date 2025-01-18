@@ -11,7 +11,7 @@ def game():
     # Set up the game window
     win = GraphWin("Center Target Game", WINDOW_WIDTH, WINDOW_HEIGHT)
     win.setBackground("light gray")
-    menus = {0: single, 1: multi, 2: about}
+    menus = {0: single, 1: multi, 2: about, 3:quit}
 
     exit = 1
     while True:

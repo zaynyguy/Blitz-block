@@ -31,7 +31,7 @@ class Button:
         self.rect = Rectangle(Point(x - width / 2, y - height / 2),
                               Point(x + width / 2, y + height / 2))
         self.rect.setFill("white")  # Default background color
-        self.rect.setOutline("gold")
+        self.rect.setOutline("darkgray")
         self.rect.draw(win)
 
         # Add text to the button
@@ -59,7 +59,7 @@ class Button:
 
 # Used to create titles in the middle of the screen 
 def message_menu(message, win):
-    win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"{message}")
+    win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 3), f"{message}")
     win_message.setTextColor("white")
     win_message.setFace('Press Start 2P')
     win_message.setSize(30)
@@ -67,8 +67,8 @@ def message_menu(message, win):
 
     time.sleep(1)
 
-    menu_button = Button(win, Point(300,400), 100, 50, 'Main menu')
-    quit_button = Button(win, Point(500,400), 50, 50, 'Quit!')
+    menu_button = Button(win, Point(300,300), 100, 50, 'Main menu')
+    quit_button = Button(win, Point(500,300), 50, 50, 'Quit!')
 
     exit_value = 1
 
@@ -86,15 +86,15 @@ def message_menu(message, win):
     return exit_value
 
 def game_style_menu(win):
-    win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2), f"Choose game")
+    win_message = Text(Point(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 3), f"Choose game")
     win_message.setTextColor("white")
     win_message.setFace('Press Start 2P')
     win_message.setSize(30)
     win_message.draw(win)
 
-    breaker = Button(win, Point(250,400), 100, 30, 'Breaker')
-    multi = Button(win, Point(400,400), 100, 30, 'Pong')
-    play = Button(win, Point(550,400), 100, 30, 'Blitz')
+    breaker = Button(win, Point(250,300), 100, 30, 'Breaker')
+    multi = Button(win, Point(400,300), 100, 30, 'Pong')
+    play = Button(win, Point(550,300), 100, 30, 'Blitz')
 
     point = win.getMouse()
 
